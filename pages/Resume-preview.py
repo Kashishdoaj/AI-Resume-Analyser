@@ -2,14 +2,16 @@ import streamlit as st
 
 st.title("📄 Resume Preview")
 
-if "resume_text" not in st.session_state:
+if "resume_text" in st.session_state:
 
-    st.warning(
-        "Please upload a resume first."
+    st.text_area(
+        "Extracted Resume",
+        st.session_state.resume_text,
+        height=500
     )
 
 else:
 
-    st.write(
-        st.session_state.resume_text
+    st.warning(
+        "Upload a resume first."
     )

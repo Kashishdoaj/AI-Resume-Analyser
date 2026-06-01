@@ -1,36 +1,19 @@
 import streamlit as st
-from PyPDF2 import PdfReader
 
 st.set_page_config(
     page_title="AI Resume Analyzer",
-    page_icon="📄"
+    page_icon="📄",
+    layout="wide"
 )
 
 st.title("📄 AI Resume Analyzer")
 
-uploaded_file = st.file_uploader(
-    "Upload Resume",
-    type=["pdf"]
-)
+st.markdown("""
+Welcome to the AI Resume Analyzer.
 
-if uploaded_file:
+Use the sidebar to:
 
-    pdf_reader = PdfReader(uploaded_file)
-
-    text = ""
-
-    for page in pdf_reader.pages:
-        extracted = page.extract_text()
-
-        if extracted:
-            text += extracted
-
-    st.session_state.resume_text = text
-
-    st.success(
-        "Resume uploaded successfully."
-    )
-
-    st.info(
-        "Use the left sidebar to open Resume Preview."
-    )
+- Resume Preview
+- Single Resume Analysis
+- Multiple Resume Comparison
+""")
